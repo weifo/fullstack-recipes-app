@@ -1,0 +1,35 @@
+/* 走马灯左右箭头显示 */
+.ant-carousel .slick-prev,
+.ant-carousel .slick-next {
+  top:20px;
+  opacity:0;
+  font-size:2em;
+}
+.ant-carousel .slick-prev:hover,
+.ant-carousel .slick-next:hover {
+  top:20px;
+  font-size: 2em;
+  color: rgba(0,0,0,.6);
+  opacity:1;
+}
+
+.number{
+  color:#dd3915;
+  font-size:20px;
+  font-weight:700;
+  padding:0 10px 0 20px;
+}
+
+/* 创建菜谱页面的表单项 */
+input.hidden,input.focused{
+  line-height:40px;
+  padding:10px;
+  width:100%;
+  border:1px solid transparent;
+  background-color:transparent;
+  cursor:pointer;
+  opacity:0
+}
+.focused{
+  opacity:1;
+}
