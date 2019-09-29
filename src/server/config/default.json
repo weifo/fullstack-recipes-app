@@ -1,0 +1,4 @@
+{
+    "mongoURI":"mongodb://username:password@path.mlab.com:51463/weifodb",
+    "jwtSecret":"abc1234"
+}

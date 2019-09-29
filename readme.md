@@ -18,11 +18,11 @@ features
 系统截图
 -----------
 **主页图片**
-!["系统主页"](main.JPG)
+!["系统主页"](./src/assets/main.JPG)
 
 **菜谱图片**
-!["菜谱图片"](recipes.JPG)
+!["菜谱图片"](./src/assets/recipes.JPG)
 
 **详细菜谱**
-!["菜谱详情"](recipe1.JPG)
+!["菜谱详情"](./src/assets/recipe1.JPG)
 
