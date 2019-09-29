@@ -1,8 +1,4 @@
 import React from 'react';
-import {
-    Upload
-} from 'antd';
-import CustomInput from '../components/CustomInput';
 import Cover from '../components/Cover';
 import PicturesWall from '../components/ImageWall';
 import Steps from '../components/Steps';

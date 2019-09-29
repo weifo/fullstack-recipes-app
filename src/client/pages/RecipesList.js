@@ -12,7 +12,7 @@ const Search=Input.Search;
 import Tags from '../components/Tags';
 import Rating from '../components/Rating';
 
-
+const {Meta}=Card;
 export default class Recipes extends React.Component{
     state={
         recipes:JSON.parse(localStorage.getItem('mongodb_recipes'))||[],
@@ -42,7 +42,7 @@ export default class Recipes extends React.Component{
     render(){
         const {recipes}=this.state;
         return(
-            <div style={{background:'#8ac',width:'90%',margin:'0 auto',padding:10}}>
+            <div style={{background:'#8ac',width:'70%',margin:'0 auto',padding:10}}>
                 <Search
                     placeholder="搜索家常菜"
                     onSearch={value=>this.handleSearch(value)}
@@ -57,7 +57,9 @@ export default class Recipes extends React.Component{
                         recipes.map((recipe,idx)=>
                             <div key={idx}>
                              <h1 style={{fontSize:30,textAlign:'center'}}>{recipe.title}</h1>
-                             <img src={recipe.cover} referrerPolicy ="never" />
+                             <div style={
+                            {height:420,background:`url(${recipe.cover}) center/cover no-repeat`,overflow:'hidden'}
+                            }></div>                             
                              <p className='info'>
                              <span className='number'>{recipe.rating}</span>
                              <span className='title'>综合评分</span>
@@ -74,9 +76,15 @@ export default class Recipes extends React.Component{
                             bordered
                             dataSource={recipe.text}
                             renderItem={(item,idx) => (<List.Item key={idx}>
-                            <Card title={`步骤${idx}`}>
-                            {recipe.pictures&&recipe.pictures[idx]&&<img src={recipe.pictures[idx]} referrerPolicy ="never"/>}
-                            {item}
+                            <Card title={recipe.title}
+                            hoverable
+                            cover={
+                                recipe.pictures&&recipe.pictures[idx]&&
+                                <img src={recipe.pictures[idx]} style={{width:300,float:'right'}} referrerPolicy ="never"/>
+                            }
+                            style={{width:'100%'}}
+                            >
+                            <Meta title={`步骤${idx+1}`} description={item} />
                             </Card>
                             </List.Item>)}
                             />

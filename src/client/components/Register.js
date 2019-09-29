@@ -23,9 +23,24 @@ handleSubmit = (e) => {
     e.preventDefault();
     this.props.form.validateFieldsAndScroll((err, values) => {
     if (!err) {
-        console.log('Received values of form: ', values);
+        // console.log('Received values of form: ', values);
+        values.avatar='http://i2.chuimg.com/49be7bea872c11e6b87c0242ac110003_680w_453h.jpg?imageView2/2/w/660/interlace/1/q/90';
         axios.post('/api/users',values)
-        .then(res=>console.log(res));
+        .then(res=>res.data)
+        .then(({token,user})=>{
+            message.success('注册成功！');
+            localStorage.setItem('user',JSON.stringify(user));
+            document.cookie=`token=${token}`;
+            // document.location.reload();
+            setTimeout(()=>{
+              document.location.hash='';
+            },1000);
+        })
+        .catch(err=>{
+            let data=err.response.data
+           message.error(data.msg);
+          })
+        ;
     }
     });
 }
@@ -38,7 +53,7 @@ handleConfirmBlur = (e) => {
 compareToFirstPassword = (rule, value, callback) => {
     const form = this.props.form;
     if (value && value !== form.getFieldValue('password')) {
-    callback('Two passwords that you enter is inconsistent!');
+    callback('前后密码不一致！');
     } else {
     callback();
     }
@@ -52,15 +67,7 @@ validateToNextPassword = (rule, value, callback) => {
     callback();
 }
 
-handleWebsiteChange = (value) => {
-    let autoCompleteResult;
-    if (!value) {
-    autoCompleteResult = [];
-    } else {
-    autoCompleteResult = ['.com', '.org', '.net'].map(domain => `${value}${domain}`);
-    }
-    this.setState({ autoCompleteResult });
-}
+
 
 render() {
     const { getFieldDecorator } = this.props.form;
@@ -92,20 +99,20 @@ render() {
     <Form {...formItemLayout} onSubmit={this.handleSubmit} style={style1}>
        <h2>开始你的美味之旅</h2>
         <Form.Item
-        label="E-mail"
+        label="电子邮箱"
         >
         {getFieldDecorator('email', {
             rules: [{
-            type: 'email', message: 'The input is not valid E-mail!',
+            type: 'email', message: '输入邮箱格式不正确！',
             }, {
-            required: true, message: 'Please input your E-mail!',
+            required: true, message: '该项不能为空',
             }],
         })(
             <Input />
         )}
         </Form.Item>
         <Form.Item
-        label="Password"
+        label="密码"
         >
         {getFieldDecorator('password', {
             rules: [{
@@ -118,7 +125,7 @@ render() {
         )}
         </Form.Item>
         <Form.Item
-        label="Confirm Password"
+        label="确认密码"
         >
         {getFieldDecorator('confirm', {
             rules: [{

@@ -1,3 +1,6 @@
+ul{
+  /* padding:0; */
+}
 /* 走马灯左右箭头显示 */
 .ant-carousel .slick-prev,
 .ant-carousel .slick-next {
@@ -32,4 +35,63 @@ input.hidden,input.focused{
 }
 .focused{
   opacity:1;
+}
+
+/* 主页的样式 */
+.cat-icon{
+  display:inline-block;
+  vertical-align:middle;
+  background:none no-repeat 0;
+  background-image: url('../assets/category.png');
+  width:32px;
+  height:32px;
+  margin-right:16px;
+}
+
+.cat-name{
+  vertical-align: middle;
+}
+
+.recipe_desc li{
+  list-style: none;
+}
+.recipe_desc  span{
+  color:#e74c3c;
+  font-style: italic;
+}
+
+a {
+  color: #e74c3c;
+  text-align:center;
+}
+a:hover{
+  background:#e74c3c;
+  color:#fff
+}
+.normal_link:hover{
+  background:transparent
+}
+.cat-link{
+  color:#000;
+}
+.cat-link:hover{
+  color:#e74c3c;
+  background:#fff;
+}
+.middle-panel{
+  float: left;
+  width:490px;
+}
+.middle-panel .slick-list .slick-slide{
+  position: relative;
+  cursor: pointer;
+}
+.middle-panel .slick-list .slick-slide h3{
+  position: absolute;
+  top:70%;
+  left:10%;
+  font-size:35px;
+  font-weight:700;
+  color:#fff;
+  background:rgba(0,0,0,.1);
 }

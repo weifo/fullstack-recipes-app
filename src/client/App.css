@@ -5,14 +5,26 @@ body {
 }
 
 img {
-  width: 100%;
-  height: auto;
+}
+.recipe_desc li{
+  list-style: none;
+}
+.recipe_desc  span{
+  color:#e74c3c;
+  font-style: italic;
 }
 
 a {
-  color: #e74c3c !important;
+  color: #e74c3c;
+  text-align:center;
 }
-
+a:hover{
+  background:#e74c3c;
+  color:#fff
+}
+.normal_link:hover{
+  background:transparent
+}
 button:focus {
   outline: none;
 }

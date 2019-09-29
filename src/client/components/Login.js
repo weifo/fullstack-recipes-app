@@ -25,9 +25,11 @@ const formStyle={
             data:values
           })
           .then(res=>res.data)
-          .then(({token})=>{
+          .then(({token,user})=>{
             message.success('登录成功');
             document.cookie=`token=${token}`;
+            localStorage.setItem('user',JSON.stringify(user));
+            // document.location.reload();
             setTimeout(()=>{
               document.location.hash='';
             },1000);
